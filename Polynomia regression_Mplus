@@ -1,0 +1,243 @@
+Mplus VERSION 7.11
+MUTHEN & MUTHEN
+11/30/2019  10:24 PM
+
+INPUT INSTRUCTIONS
+
+    TITLE: Well-being non-linear
+    Data: FILE IS PV1.txt;
+    VARIABLE:	NAMES ARE ST004D01T IMMIG ESCS MOTIVAT
+                        ANXTEST EMOSUPS BELONG TEACHSUP
+                        PVSCIE  ST016Q01NA SENWT
+                        IMMIG2 IMMIG3;
+    USEVARIABLES ARE  ST016Q01NA Q1 Q2 Q3;
+
+
+    MISSING ARE ALL(9999);
+
+    WEIGHT=SENWT;
+    DEFINE:
+    BELONG_bar=-0.104 ;! mean of EMOSUPS
+    Q1=(BELONG-BELONG_bar);
+    Q2=(BELONG-BELONG_bar)*(BELONG-BELONG_bar);
+    Q3=(BELONG-BELONG_bar)*(BELONG-BELONG_bar)*(BELONG-BELONG_bar);
+    Analysis: Estimator = MLR
+    MODEL:	ST016Q01NA ON Q1 Q2  Q3;
+    Output:stdyx;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  180
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  46
+*** WARNING
+  Data set contains cases with missing on all variables except
+  x-variables.  These cases were not included in the analysis.
+  Number of cases with missing on all variables except x-variables:  325
+   4 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Well-being non-linear
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                       39061
+
+Number of dependent variables                                    1
+Number of independent variables                                  3
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   ST016Q01NA
+
+Observed independent variables
+   Q1          Q2          Q3
+
+Variables with special functions
+
+  Weight variable       SENWT
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  PV1.txt
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              ST016Q01      Q1            Q2            Q3
+              ________      ________      ________      ________
+ ST016Q01       1.000
+ Q1             1.000         1.000
+ Q2             1.000         1.000         1.000
+ Q3             1.000         1.000         1.000         1.000
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        5
+
+Loglikelihood
+
+          H0 Value                      -86004.696
+          H0 Scaling Correction Factor      2.3282
+            for MLR
+          H1 Value                      -86004.696
+          H1 Scaling Correction Factor      2.3282
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                  172019.391
+          Bayesian (BIC)                172062.256
+          Sample-Size Adjusted BIC      172046.366
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                              0.000*
+          Degrees of Freedom                     0
+          P-Value                           0.0000
+          Scaling Correction Factor         1.0000
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.000
+          90 Percent C.I.                    0.000  0.000
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                1.000
+          TLI                                1.000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1607.237
+          Degrees of Freedom                     3
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.000
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ST016Q01 ON
+    Q1                 1.179      0.029     40.383      0.000
+    Q2                 0.017      0.018      0.971      0.332
+    Q3                -0.107      0.008    -13.107      0.000
+
+ Intercepts
+    ST016Q01NA         6.785      0.018    381.546      0.000
+
+ Residual Variances
+    ST016Q01NA         4.786      0.048     99.782      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ST016Q01 ON
+    Q1                 0.442      0.011     40.805      0.000
+    Q2                 0.011      0.012      0.970      0.332
+    Q3                -0.194      0.015    -12.881      0.000
+
+ Intercepts
+    ST016Q01NA         2.941      0.018    164.714      0.000
+
+ Residual Variances
+    ST016Q01NA         0.899      0.004    219.769      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    ST016Q01           0.101      0.004     24.677      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.139E-01
+       (ratio of smallest to largest eigenvalue)
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    d:\dropbox\future research\jihuyn\pisa 2015\analysis\confucian_asia\well-being_non-linear_belong
+
+     Beginning Time:  22:24:52
+        Ending Time:  22:24:52
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2013 Muthen & Muthen
