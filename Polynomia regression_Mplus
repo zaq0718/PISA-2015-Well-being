@@ -15,7 +15,7 @@ INPUT INSTRUCTIONS
 
     MISSING ARE ALL(9999);
 
-    WEIGHT=SENWT;
+    WEIGHT=SENWT;!students' senate weights
     DEFINE:
     BELONG_bar=-0.104 ;! mean of EMOSUPS
     Q1=(BELONG-BELONG_bar);
