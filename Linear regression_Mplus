@@ -1,0 +1,967 @@
+Mplus VERSION 7.11
+MUTHEN & MUTHEN
+11/11/2019  10:49 PM
+
+INPUT INSTRUCTIONS
+
+    TITLE: Well-being
+    Data: FILE IS PV.dat;
+    Type=imputation;! 10 plausible values of sciences
+    VARIABLE:	NAMES ARE ST004D01T IMMIG ESCS MOTIVAT
+                        ANXTEST EMOSUPS BELONG TEACHSUP
+                        PVSCIE  ST016Q01NA SENWT
+                        IMMIG2 IMMIG3;
+    USEVARIABLES ARE ST004D01T ESCS MOTIVAT ANXTEST
+                     EMOSUPS BELONG TEACHSUP PVSCIE
+                     ST016Q01NA IMMIG2 IMMIG3;
+
+    MISSING ARE all(9999);
+
+    WEIGHT=SENWT;!students' senate weights
+    Analysis: Estimator = MLR
+    MODEL:	ST016Q01NA ON ST004D01T ESCS  MOTIVAT ANXTEST EMOSUPS
+                            BELONG TEACHSUP PVSCIE IMMIG2 IMMIG3;
+    Output:stdyx;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+Well-being
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Average number of observations                               34691
+
+Number of replications
+    Requested                                                   10
+    Completed                                                   10
+
+Number of dependent variables                                    1
+Number of independent variables                                 10
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   ST016Q01NA
+
+Observed independent variables
+   ST004D01    ESCS        MOTIVAT     ANXTEST     EMOSUPS     BELONG
+   TEACHSUP    PVSCIE      IMMIG2      IMMIG3
+
+Variables with special functions
+
+  Weight variable       SENWT
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Multiple data files from
+    PV.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA FOR THE FIRST DATA SET
+
+     Number of missing data patterns             1
+
+
+SUMMARY OF MISSING DATA PATTERNS FOR THE FIRST DATA SET
+
+
+     MISSING DATA PATTERNS (x = not missing)
+
+           1
+ ST016Q01  x
+ ST004D01  x
+ ESCS      x
+ MOTIVAT   x
+ ANXTEST   x
+ EMOSUPS   x
+ BELONG    x
+ TEACHSUP  x
+ PVSCIE    x
+ IMMIG2    x
+ IMMIG3    x
+
+
+     MISSING DATA PATTERN FREQUENCIES
+
+    Pattern   Frequency
+          1       34691
+
+
+COVARIANCE COVERAGE OF DATA FOR THE FIRST DATA SET
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01       1.000
+ ST004D01       1.000         1.000
+ ESCS           1.000         1.000         1.000
+ MOTIVAT        1.000         1.000         1.000         1.000
+ ANXTEST        1.000         1.000         1.000         1.000         1.000
+ EMOSUPS        1.000         1.000         1.000         1.000         1.000
+ BELONG         1.000         1.000         1.000         1.000         1.000
+ TEACHSUP       1.000         1.000         1.000         1.000         1.000
+ PVSCIE         1.000         1.000         1.000         1.000         1.000
+ IMMIG2         1.000         1.000         1.000         1.000         1.000
+ IMMIG3         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ EMOSUPS        1.000
+ BELONG         1.000         1.000
+ TEACHSUP       1.000         1.000         1.000
+ PVSCIE         1.000         1.000         1.000         1.000
+ IMMIG2         1.000         1.000         1.000         1.000         1.000
+ IMMIG3         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              IMMIG3
+              ________
+ IMMIG3         1.000
+
+
+SAMPLE STATISTICS
+
+NOTE:  These are average results over 10 data sets.
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ 1              6.736         0.485        -0.525        -0.052         0.240
+
+
+           Means
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ 1             -0.289        -0.104         0.017       532.030         0.005
+
+
+           Means
+              IMMIG3
+              ________
+ 1              0.004
+
+
+           Covariances
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01       5.224
+ ST004D01      -0.025         0.250
+ ESCS           0.123         0.005         0.981
+ MOTIVAT        0.159        -0.022         0.067         0.974
+ ANXTEST       -0.251         0.045        -0.007         0.140         0.865
+ EMOSUPS        0.665         0.035         0.127         0.245         0.015
+ BELONG         0.594        -0.011         0.161         0.125        -0.087
+ TEACHSUP       0.450        -0.006        -0.003         0.122        -0.015
+ PVSCIE         6.150        -2.262        34.781        13.995        -4.278
+ IMMIG2        -0.002         0.000        -0.001         0.000         0.001
+ IMMIG3        -0.002         0.000        -0.001         0.000         0.000
+
+
+           Covariances
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ EMOSUPS        0.869
+ BELONG         0.213         0.756
+ TEACHSUP       0.199         0.141         0.860
+ PVSCIE        10.391         7.466         5.574      9314.741
+ IMMIG2        -0.001        -0.001         0.000        -0.105         0.005
+ IMMIG3        -0.002        -0.001         0.000        -0.191         0.000
+
+
+           Covariances
+              IMMIG3
+              ________
+ IMMIG3         0.003
+
+
+           Correlations
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01       1.000
+ ST004D01      -0.022         1.000
+ ESCS           0.054         0.010         1.000
+ MOTIVAT        0.070        -0.045         0.069         1.000
+ ANXTEST       -0.118         0.096        -0.007         0.152         1.000
+ EMOSUPS        0.312         0.075         0.138         0.267         0.017
+ BELONG         0.299        -0.024         0.187         0.145        -0.107
+ TEACHSUP       0.213        -0.012        -0.003         0.133        -0.017
+ PVSCIE         0.028        -0.047         0.364         0.147        -0.048
+ IMMIG2        -0.010         0.005        -0.013        -0.004         0.008
+ IMMIG3        -0.011         0.005        -0.019        -0.001        -0.006
+
+
+           Correlations
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ EMOSUPS        1.000
+ BELONG         0.263         1.000
+ TEACHSUP       0.230         0.175         1.000
+ PVSCIE         0.115         0.089         0.062         1.000
+ IMMIG2        -0.021        -0.008        -0.002        -0.016         1.000
+ IMMIG3        -0.029        -0.015         0.003        -0.033        -0.004
+
+
+           Correlations
+              IMMIG3
+              ________
+ IMMIG3         1.000
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       12
+
+Loglikelihood
+
+    H0 Value
+
+        Mean                            -74599.392
+        Std Dev                              2.116
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       -74604.315     -74603.458
+           0.980       1.000       -74603.738     -74603.458
+           0.950       0.900       -74602.873     -74603.458
+           0.900       0.800       -74602.104     -74603.458
+           0.800       0.800       -74601.173     -74603.458
+           0.700       0.700       -74600.502     -74600.643
+           0.500       0.600       -74599.392     -74599.351
+           0.300       0.300       -74598.282     -74598.388
+           0.200       0.200       -74597.611     -74597.864
+           0.100       0.100       -74596.679     -74597.306
+           0.050       0.000       -74595.911     -74597.306
+           0.020       0.000       -74595.045     -74597.306
+           0.010       0.000       -74594.469     -74597.306
+
+    H1 Value
+
+        Mean                            -74599.392
+        Std Dev                              2.116
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       -74604.315     -74603.458
+           0.980       1.000       -74603.738     -74603.458
+           0.950       0.900       -74602.873     -74603.458
+           0.900       0.800       -74602.104     -74603.458
+           0.800       0.800       -74601.173     -74603.458
+           0.700       0.700       -74600.501     -74600.643
+           0.500       0.600       -74599.392     -74599.350
+           0.300       0.300       -74598.282     -74598.388
+           0.200       0.200       -74597.611     -74597.864
+           0.100       0.100       -74596.679     -74597.306
+           0.050       0.000       -74595.911     -74597.306
+           0.020       0.000       -74595.045     -74597.306
+           0.010       0.000       -74594.469     -74597.306
+
+Information Criteria
+
+    Akaike (AIC)
+
+        Mean                            149222.784
+        Std Dev                              4.233
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       149212.937     149216.601
+           0.980       1.000       149214.091     149216.601
+           0.950       1.000       149215.821     149216.601
+           0.900       0.900       149217.359     149216.601
+           0.800       0.800       149219.221     149216.601
+           0.700       0.700       149220.564     149219.727
+           0.500       0.400       149222.784     149220.891
+           0.300       0.300       149225.003     149223.783
+           0.200       0.200       149226.346     149225.286
+           0.100       0.200       149228.208     149228.541
+           0.050       0.100       149229.746     149228.541
+           0.020       0.000       149231.476     149228.541
+           0.010       0.000       149232.630     149228.541
+
+    Bayesian (BIC)
+
+        Mean                            149324.234
+        Std Dev                              4.233
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       149314.388     149318.052
+           0.980       1.000       149315.542     149318.052
+           0.950       1.000       149317.272     149318.052
+           0.900       0.900       149318.810     149318.052
+           0.800       0.800       149320.672     149318.052
+           0.700       0.700       149322.015     149321.178
+           0.500       0.400       149324.234     149322.342
+           0.300       0.300       149326.454     149325.234
+           0.200       0.200       149327.797     149326.737
+           0.100       0.200       149329.659     149329.992
+           0.050       0.100       149331.197     149329.992
+           0.020       0.000       149332.927     149329.992
+           0.010       0.000       149334.081     149329.992
+
+    Sample-Size Adjusted BIC (n* = (n + 2) / 24)
+
+        Mean                            149286.098
+        Std Dev                              4.233
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       149276.252     149279.916
+           0.980       1.000       149277.406     149279.916
+           0.950       1.000       149279.136     149279.916
+           0.900       0.900       149280.674     149279.916
+           0.800       0.800       149282.536     149279.916
+           0.700       0.700       149283.879     149283.042
+           0.500       0.400       149286.098     149284.206
+           0.300       0.300       149288.318     149287.098
+           0.200       0.200       149289.661     149288.601
+           0.100       0.200       149291.523     149291.856
+           0.050       0.100       149293.061     149291.856
+           0.020       0.000       149294.791     149291.856
+           0.010       0.000       149295.945     149291.856
+
+Chi-Square Test of Model Fit
+
+        Degrees of freedom                       0
+
+        Mean                                 0.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000            0.000          0.000
+           0.980       1.000            0.000          0.000
+           0.950       1.000            0.000          0.000
+           0.900       1.000            0.000          0.000
+           0.800       1.000            0.000          0.000
+           0.700       1.000            0.000          0.000
+           0.500       1.000            0.000          0.000
+           0.300       1.000            0.000          0.000
+           0.200       1.000            0.000          0.000
+           0.100       1.000            0.000          0.000
+           0.050       1.000            0.000          0.000
+           0.020       1.000            0.000          0.000
+           0.010       1.000            0.000          0.000
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+        Mean                                 0.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.000            0.000          0.000
+           0.980       0.000            0.000          0.000
+           0.950       0.000            0.000          0.000
+           0.900       0.000            0.000          0.000
+           0.800       0.000            0.000          0.000
+           0.700       0.000            0.000          0.000
+           0.500       0.000            0.000          0.000
+           0.300       0.000            0.000          0.000
+           0.200       0.000            0.000          0.000
+           0.100       0.000            0.000          0.000
+           0.050       0.000            0.000          0.000
+           0.020       0.000            0.000          0.000
+           0.010       0.000            0.000          0.000
+
+CFI/TLI
+
+    CFI
+
+        Mean                                 1.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.900            1.000          1.000
+           0.980       0.900            1.000          1.000
+           0.950       0.900            1.000          1.000
+           0.900       0.900            1.000          1.000
+           0.800       0.900            1.000          1.000
+           0.700       0.800            1.000          1.000
+           0.500       0.700            1.000          1.000
+           0.300       0.600            1.000          1.000
+           0.200       0.000            1.000          1.000
+           0.100       0.000            1.000          1.000
+           0.050       0.000            1.000          1.000
+           0.020       0.000            1.000          1.000
+           0.010       0.000            1.000          1.000
+
+    TLI
+
+        Mean                                 1.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.000            1.000          1.000
+           0.980       0.000            1.000          1.000
+           0.950       0.000            1.000          1.000
+           0.900       0.000            1.000          1.000
+           0.800       0.000            1.000          1.000
+           0.700       0.000            1.000          1.000
+           0.500       0.000            1.000          1.000
+           0.300       0.000            1.000          1.000
+           0.200       0.000            1.000          1.000
+           0.100       0.000            1.000          1.000
+           0.050       0.000            1.000          1.000
+           0.020       0.000            1.000          1.000
+           0.010       0.000            1.000          1.000
+
+SRMR (Standardized Root Mean Square Residual)
+
+        Mean                                 0.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000            0.000          0.000
+           0.980       1.000            0.000          0.000
+           0.950       1.000            0.000          0.000
+           0.900       1.000            0.000          0.000
+           0.800       1.000            0.000          0.000
+           0.700       0.400            0.000          0.000
+           0.500       0.400            0.000          0.000
+           0.300       0.400            0.000          0.000
+           0.200       0.300            0.000          0.000
+           0.100       0.200            0.000          0.000
+           0.050       0.100            0.000          0.000
+           0.020       0.000            0.000          0.000
+           0.010       0.000            0.000          0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+ ST016Q01 ON
+    ST004D01T         -0.123      0.032     -3.880      0.000      0.000
+    ESCS              -0.017      0.019     -0.901      0.368      0.014
+    MOTIVAT           -0.056      0.018     -3.106      0.002      0.002
+    ANXTEST           -0.228      0.020    -11.441      0.000      0.000
+    EMOSUPS            0.595      0.020     30.225      0.000      0.000
+    BELONG             0.552      0.020     27.174      0.000      0.000
+    TEACHSUP           0.303      0.019     15.999      0.000      0.000
+    PVSCIE            -0.001      0.000     -3.143      0.002      0.094
+    IMMIG2            -0.076      0.160     -0.478      0.633      0.000
+    IMMIG3            -0.116      0.251     -0.465      0.642      0.000
+
+ Intercepts
+    ST016Q01NA         7.393      0.114     64.891      0.000      0.087
+
+ Residual Variances
+    ST016Q01NA         4.318      0.049     88.005      0.000      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+ ST016Q01 ON
+    ST004D01T         -0.027      0.007     -3.877      0.000      0.000
+    ESCS              -0.007      0.008     -0.901      0.368      0.014
+    MOTIVAT           -0.024      0.008     -3.106      0.002      0.002
+    ANXTEST           -0.093      0.008    -11.390      0.000      0.000
+    EMOSUPS            0.243      0.008     30.277      0.000      0.000
+    BELONG             0.210      0.008     27.449      0.000      0.000
+    TEACHSUP           0.123      0.008     16.073      0.000      0.000
+    PVSCIE            -0.026      0.008     -3.144      0.002      0.093
+    IMMIG2            -0.002      0.005     -0.478      0.633      0.000
+    IMMIG3            -0.003      0.006     -0.465      0.642      0.000
+
+ Intercepts
+    ST016Q01NA         3.235      0.053     60.859      0.000      0.077
+
+ Residual Variances
+    ST016Q01NA         0.827      0.005    153.278      0.000      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed   Rate of
+    Variable        Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+    ST016Q01           0.173      0.005     32.152      0.000      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Average Condition Number for the Information Matrix      0.119E-07
+       (ratio of smallest to largest eigenvalue)
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+      1           0             0             0             0             0
+
+
+           NU
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+      1           0             0             0             0             0
+
+
+           NU
+              IMMIG3
+              ________
+      1           0
+
+
+           LAMBDA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01           0             0             0             0             0
+ ST004D01           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MOTIVAT            0             0             0             0             0
+ ANXTEST            0             0             0             0             0
+ EMOSUPS            0             0             0             0             0
+ BELONG             0             0             0             0             0
+ TEACHSUP           0             0             0             0             0
+ PVSCIE             0             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           LAMBDA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ ST016Q01           0             0             0             0             0
+ ST004D01           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MOTIVAT            0             0             0             0             0
+ ANXTEST            0             0             0             0             0
+ EMOSUPS            0             0             0             0             0
+ BELONG             0             0             0             0             0
+ TEACHSUP           0             0             0             0             0
+ PVSCIE             0             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           LAMBDA
+              IMMIG3
+              ________
+ ST016Q01           0
+ ST004D01           0
+ ESCS               0
+ MOTIVAT            0
+ ANXTEST            0
+ EMOSUPS            0
+ BELONG             0
+ TEACHSUP           0
+ PVSCIE             0
+ IMMIG2             0
+ IMMIG3             0
+
+
+           THETA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01           0
+ ST004D01           0             0
+ ESCS               0             0             0
+ MOTIVAT            0             0             0             0
+ ANXTEST            0             0             0             0             0
+ EMOSUPS            0             0             0             0             0
+ BELONG             0             0             0             0             0
+ TEACHSUP           0             0             0             0             0
+ PVSCIE             0             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           THETA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ EMOSUPS            0
+ BELONG             0             0
+ TEACHSUP           0             0             0
+ PVSCIE             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           THETA
+              IMMIG3
+              ________
+ IMMIG3             0
+
+
+           ALPHA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+      1           1             0             0             0             0
+
+
+           ALPHA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+      1           0             0             0             0             0
+
+
+           ALPHA
+              IMMIG3
+              ________
+      1           0
+
+
+           BETA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01           0             2             3             4             5
+ ST004D01           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MOTIVAT            0             0             0             0             0
+ ANXTEST            0             0             0             0             0
+ EMOSUPS            0             0             0             0             0
+ BELONG             0             0             0             0             0
+ TEACHSUP           0             0             0             0             0
+ PVSCIE             0             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           BETA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ ST016Q01           6             7             8             9            10
+ ST004D01           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MOTIVAT            0             0             0             0             0
+ ANXTEST            0             0             0             0             0
+ EMOSUPS            0             0             0             0             0
+ BELONG             0             0             0             0             0
+ TEACHSUP           0             0             0             0             0
+ PVSCIE             0             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           BETA
+              IMMIG3
+              ________
+ ST016Q01          11
+ ST004D01           0
+ ESCS               0
+ MOTIVAT            0
+ ANXTEST            0
+ EMOSUPS            0
+ BELONG             0
+ TEACHSUP           0
+ PVSCIE             0
+ IMMIG2             0
+ IMMIG3             0
+
+
+           PSI
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01          12
+ ST004D01           0             0
+ ESCS               0             0             0
+ MOTIVAT            0             0             0             0
+ ANXTEST            0             0             0             0             0
+ EMOSUPS            0             0             0             0             0
+ BELONG             0             0             0             0             0
+ TEACHSUP           0             0             0             0             0
+ PVSCIE             0             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           PSI
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ EMOSUPS            0
+ BELONG             0             0
+ TEACHSUP           0             0             0
+ PVSCIE             0             0             0             0
+ IMMIG2             0             0             0             0             0
+ IMMIG3             0             0             0             0             0
+
+
+           PSI
+              IMMIG3
+              ________
+ IMMIG3             0
+
+
+     STARTING VALUES
+
+
+           NU
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              IMMIG3
+              ________
+      1         0.000
+
+
+           LAMBDA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01       1.000         0.000         0.000         0.000         0.000
+ ST004D01       0.000         1.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         1.000         0.000         0.000
+ MOTIVAT        0.000         0.000         0.000         1.000         0.000
+ ANXTEST        0.000         0.000         0.000         0.000         1.000
+ EMOSUPS        0.000         0.000         0.000         0.000         0.000
+ BELONG         0.000         0.000         0.000         0.000         0.000
+ TEACHSUP       0.000         0.000         0.000         0.000         0.000
+ PVSCIE         0.000         0.000         0.000         0.000         0.000
+ IMMIG2         0.000         0.000         0.000         0.000         0.000
+ IMMIG3         0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ ST016Q01       0.000         0.000         0.000         0.000         0.000
+ ST004D01       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MOTIVAT        0.000         0.000         0.000         0.000         0.000
+ ANXTEST        0.000         0.000         0.000         0.000         0.000
+ EMOSUPS        1.000         0.000         0.000         0.000         0.000
+ BELONG         0.000         1.000         0.000         0.000         0.000
+ TEACHSUP       0.000         0.000         1.000         0.000         0.000
+ PVSCIE         0.000         0.000         0.000         1.000         0.000
+ IMMIG2         0.000         0.000         0.000         0.000         1.000
+ IMMIG3         0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              IMMIG3
+              ________
+ ST016Q01       0.000
+ ST004D01       0.000
+ ESCS           0.000
+ MOTIVAT        0.000
+ ANXTEST        0.000
+ EMOSUPS        0.000
+ BELONG         0.000
+ TEACHSUP       0.000
+ PVSCIE         0.000
+ IMMIG2         0.000
+ IMMIG3         1.000
+
+
+           THETA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01       0.000
+ ST004D01       0.000         0.000
+ ESCS           0.000         0.000         0.000
+ MOTIVAT        0.000         0.000         0.000         0.000
+ ANXTEST        0.000         0.000         0.000         0.000         0.000
+ EMOSUPS        0.000         0.000         0.000         0.000         0.000
+ BELONG         0.000         0.000         0.000         0.000         0.000
+ TEACHSUP       0.000         0.000         0.000         0.000         0.000
+ PVSCIE         0.000         0.000         0.000         0.000         0.000
+ IMMIG2         0.000         0.000         0.000         0.000         0.000
+ IMMIG3         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ EMOSUPS        0.000
+ BELONG         0.000         0.000
+ TEACHSUP       0.000         0.000         0.000
+ PVSCIE         0.000         0.000         0.000         0.000
+ IMMIG2         0.000         0.000         0.000         0.000         0.000
+ IMMIG3         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              IMMIG3
+              ________
+ IMMIG3         0.000
+
+
+           ALPHA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+      1         6.736         0.485        -0.525        -0.052         0.240
+
+
+           ALPHA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+      1        -0.289        -0.104         0.017       532.095         0.005
+
+
+           ALPHA
+              IMMIG3
+              ________
+      1         0.004
+
+
+           BETA
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01       0.000         0.000         0.000         0.000         0.000
+ ST004D01       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MOTIVAT        0.000         0.000         0.000         0.000         0.000
+ ANXTEST        0.000         0.000         0.000         0.000         0.000
+ EMOSUPS        0.000         0.000         0.000         0.000         0.000
+ BELONG         0.000         0.000         0.000         0.000         0.000
+ TEACHSUP       0.000         0.000         0.000         0.000         0.000
+ PVSCIE         0.000         0.000         0.000         0.000         0.000
+ IMMIG2         0.000         0.000         0.000         0.000         0.000
+ IMMIG3         0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ ST016Q01       0.000         0.000         0.000         0.000         0.000
+ ST004D01       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MOTIVAT        0.000         0.000         0.000         0.000         0.000
+ ANXTEST        0.000         0.000         0.000         0.000         0.000
+ EMOSUPS        0.000         0.000         0.000         0.000         0.000
+ BELONG         0.000         0.000         0.000         0.000         0.000
+ TEACHSUP       0.000         0.000         0.000         0.000         0.000
+ PVSCIE         0.000         0.000         0.000         0.000         0.000
+ IMMIG2         0.000         0.000         0.000         0.000         0.000
+ IMMIG3         0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              IMMIG3
+              ________
+ ST016Q01       0.000
+ ST004D01       0.000
+ ESCS           0.000
+ MOTIVAT        0.000
+ ANXTEST        0.000
+ EMOSUPS        0.000
+ BELONG         0.000
+ TEACHSUP       0.000
+ PVSCIE         0.000
+ IMMIG2         0.000
+ IMMIG3         0.000
+
+
+           PSI
+              ST016Q01      ST004D01      ESCS          MOTIVAT       ANXTEST
+              ________      ________      ________      ________      ________
+ ST016Q01       0.500
+ ST004D01       0.000         0.250
+ ESCS           0.000         0.005         0.981
+ MOTIVAT        0.000        -0.022         0.067         0.974
+ ANXTEST        0.000         0.045        -0.007         0.140         0.865
+ EMOSUPS        0.000         0.035         0.127         0.245         0.015
+ BELONG         0.000        -0.011         0.161         0.125        -0.087
+ TEACHSUP       0.000        -0.006        -0.003         0.122        -0.015
+ PVSCIE         0.000        -2.274        34.473        13.997        -4.353
+ IMMIG2         0.000         0.000        -0.001         0.000         0.001
+ IMMIG3         0.000         0.000        -0.001         0.000         0.000
+
+
+           PSI
+              EMOSUPS       BELONG        TEACHSUP      PVSCIE        IMMIG2
+              ________      ________      ________      ________      ________
+ EMOSUPS        0.869
+ BELONG         0.213         0.756
+ TEACHSUP       0.199         0.141         0.860
+ PVSCIE        10.249         7.227         5.757      9315.405
+ IMMIG2        -0.001        -0.001         0.000        -0.103         0.005
+ IMMIG3        -0.002        -0.001         0.000        -0.203         0.000
+
+
+           PSI
+              IMMIG3
+              ________
+ IMMIG3         0.003
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    d:\dropbox\future research\jihuyn\pisa 2015\analysis\confucian_asia\well-being.dgm
+
+     Beginning Time:  22:49:17
+        Ending Time:  22:49:35
+       Elapsed Time:  00:00:18
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2013 Muthen & Muthen
