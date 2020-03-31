@@ -1,0 +1,28 @@
+  TITLE: Well-being_Model 4
+  Data: FILE IS PV.dat;
+  Type=imputation; ! 10 plausible values of sciences 
+  VARIABLE:	NAMES ARE ST004D01T IMMIG ESCS MOTIVAT 
+                      ANXTEST EMOSUPS BELONG TEACHSUP 
+                      PVSCIE  ST016Q01NA SENWT
+                      IMMIG2 IMMIG3;
+  USEVARIABLES ARE ST016Q01NA ST004D01T IMMIG2 IMMIG3 ESCS 
+                    MOTIVAT ANXTEST PVSCIE EMOSUPS TEACHSUP Q1 Q2 ;
+  
+  MISSING ARE all(9999);
+  
+  WEIGHT=SENWT; !students' senate weights 
+  DEFINE: 
+  BELONG_bar=-0.104 ;! mean of BELONG
+  Q1=(BELONG-BELONG_bar);
+  Q2=(BELONG-BELONG_bar)*(BELONG-BELONG_bar);
+ 
+  Analysis: Estimator = MLR
+  MODEL:	ST016Q01NA ON ST004D01T IMMIG2 IMMIG3 ESCS 
+                          MOTIVAT ANXTEST PVSCIE 
+                          EMOSUPS Q1 Q2 TEACHSUP ;
+  Output:stdyx;
+
+
+
+
+
