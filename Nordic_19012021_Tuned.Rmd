@@ -1,0 +1,208 @@
+---
+title: "Nordic"
+author: "Yi-Jhen"
+date: "19 01 2021"
+output: pdf_document
+toc: true
+top_depth: true
+header-includes: 
+- \usepackage{placeins}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r package, message=FALSE}
+# Markdown 
+library(knitr)
+library(kableExtra)
+
+# Data Analysis
+library(dplyr)
+library(naniar)
+library(caret)
+library(rpart)
+library(rpart.plot)
+library(rattle)
+```
+
+## Check the operation system
+```{r system}
+sessionInfo()
+```
+
+\newpage  
+
+\FloatBarrier
+
+## Versions of packages
+```{r versions}
+pkg <- tibble::tibble(
+  Package = names(installed.packages()[,3]),
+  Version = unname(installed.packages()[,3])
+)
+
+usePackages <- c("dplyr","naniar","caret","rpart","rpart.plot","rattle")
+version <- dplyr::filter(pkg , Package %in% usePackages )
+kable(version,caption = "Versions of packages")%>%
+  kable_styling(latex_options =c("striped", "hold_position"))
+```
+
+## Data
+
+```{r data }
+dta <- read.csv("PV1.txt",sep="", header = FALSE)
+nrow(dta)
+colnames(dta) <- c("ST004D01T","IMMIG","ESCS","MOTIVAT","ANXTEST","EMOSUPS",
+                   "BELONG","TEACHSUP","PVSCIE","ST016Q01NA","SENWT",
+                   "IMMIG2","IMMIG3")
+dta <- as.data.frame(dta[,c("ST004D01T","IMMIG","ESCS","MOTIVAT","ANXTEST",
+                            "EMOSUPS","BELONG","TEACHSUP","PVSCIE","ST016Q01NA")])
+dta <- dta%>%mutate_at(c("ST016Q01NA"),as.numeric)%>%replace_with_na_all(condition = ~.x==9999)
+apply(dta,2,function(x) sum(is.na(x)/nrow(dta)))
+dta <- dta[complete.cases(dta),]#delete NA values in data
+dta <- dta%>%mutate(wb=cut(ST016Q01NA,
+                                 quantile(ST016Q01NA, c(0, .25, .75, 1),na.rm=TRUE),
+                                 labels = c('Low', 'Medium', 'High'),
+                                 include.lowest = TRUE))
+
+# Check the proportions of low, middle, and high well-being 
+round(table(dta$wb,useNA = "always")/nrow(dta),digits = 2)#
+
+# Selected only low and high well-being students 
+dta_n <- dta%>%filter(wb=="Low"|wb=="High")%>%
+  select(c("ST004D01T","IMMIG","ESCS","MOTIVAT","ANXTEST","EMOSUPS",
+           "BELONG","TEACHSUP","PVSCIE","wb"))
+nrow(dta_n)
+
+dta_n <- dta_n%>%mutate_at(c("ST004D01T","IMMIG"),as.factor)
+dta_n$wb<- factor(dta_n$wb)
+
+# 80% training data 
+set.seed(1234);train <- sample(1:nrow(dta_n),floor(nrow(dta_n)*0.8),replace = FALSE)
+training <- dta_n[train,]
+testing <- dta_n[-train,]
+```
+
+
+## Model 0: Decision tree for training and testing data 
++ Baseline: default cp=0.01
+```{r Model0}
+#training
+set.seed(1234);model <- rpart(wb~.,data=training,method = "class",na.action = na.omit)
+Model0 <- summary(model)
+model$cptable[which.min(model$cptable[,"xerror"]),"CP"]#show the cp values and find the small cross-validated error, which is 0.01
+#variables are used in the tree , choosing cp based on the low xerror 
+prune0 <- prune(model, cp = 0.01)
+Pred0 <- predict(prune0,training,type="class")
+acc0<- confusionMatrix(Pred0,training$wb)
+acc0
+
+#testing
+PredT0 <- predict(prune0,testing,type="class")
+accT0 <- confusionMatrix(PredT0,testing$wb)
+accT0
+```
+
+\newpage  
+
+\FloatBarrier
+
+## Plot and important variables for the baseline model
+
+```{r Model0plot}
+rpart.plot(prune0,extra = 104,yesno=2)
+Model0 $variable.importance
+#importance variables were scaled to 100
+barplot(t((Model0 $variable.importance/sum(Model0$variable.importance)*100)),horiz=TRUE,xlim = c(0,100))
+```
+
+
+## Model1: Decision tree for training and testing data 
++ Pruned model: let a tree fully grows(set cp=0), then find a smallest cross-validated error
++ the smallest cross-validated error: 0.5972669, corresponding cp=0.0064308682
+```{r Model1}
+# training
+set.seed(1234);model1 <- rpart(wb~.,data=training,method = "class",na.action = na.omit,
+                              control=rpart.control(cp=0))
+# set seed to make results reproducible
+Model1 <- summary(model1)
+# show the cp values and find the small cross-validated error
+plotcp(model1)
+model1$cptable[which.min(model1$cptable[,"xerror"]),"CP"]
+prune1 <- prune(model1, cp = 0.006430868)
+Model1 <- summary(prune1)
+#variables are used in the tree , choosing cp based on the low xerror 
+Pred1 <- predict(prune1,training,type="class")
+acc1<- confusionMatrix(Pred1,training$wb)
+acc1
+
+# testing
+PredT1 <- predict(prune1,testing,type="class")
+accT1 <- confusionMatrix(PredT1,testing$wb)
+accT1
+```
+
+\newpage  
+
+\FloatBarrier
+
+## Plot and important variables for the tunned model
+
+```{r Model1plot}
+rpart.plot(prune1,extra = 104,yesno=2)
+Model1 $variable.importance
+#importance variables were scaled to 100
+barplot(t((Model1$variable.importance/sum(Model1$variable.importance)*100)),horiz=TRUE,xlim = c(0,100))
+```
+
+
+## Model2: Decision tree for training and testing data 
++ Pruned model: the smallest xerror+1*SD rule to tune the tree=0.61657491
++ 0.61657491 corresponds to cp=0.0064308682
++ We did not have to run Model 2, because the cp is the same as in Model 1
+
+
+
+
+\newpage  
+
+\FloatBarrier
+
+## Tune hyperparamter: minsplit 
++ After tuning the minsplit from 10 to 60, we chose the default (i.e., 20), because there was no so much improvement as minsplit increased
+
+```{r}
+split <- c(10,20,30,40,50,60)
+grid <- function(x){
+  
+set.seed(1234);model3_1 <-rpart(wb~.,data=training,method = "class",na.action = na.omit,minsplit=x,cp=0.006430868)
+
+Pred3_1 <- predict(model3_1,training,type="class")
+acc3_1<- confusionMatrix(Pred3_1,training$wb)
+
+
+
+PredT3_1 <- predict(model3_1,testing,type="class")
+accT3_1 <- confusionMatrix(PredT3_1 ,testing$wb)
+
+
+accuracy <- cbind(round(acc3_1$overall,4),round(accT3_1$overall,4))
+colnames(accuracy) <- c("train","test")
+
+sens <- cbind(round(acc3_1$byClass,4),round(accT3_1$byClass,4))
+colnames(sens) <- c("train","test")
+
+results <- list(accuracy,sens)
+return(results)
+}
+
+res_split <- list(NULL,NULL,NULL,NULL)
+
+for (i in 1:length(split)){
+  
+  res_split[[i]]<- grid(x=split[i])
+}
+```
+
