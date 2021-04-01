@@ -11,4 +11,6 @@ The Student questionnaire data file was used.
 4.	Quadratic regression_Mplus: Quadratic regression analysis for belonginess in a cultural region.
 5.	Polynomial regression_Mplus: Polynomial regression analysis for belonginess in a cultural region.
 6.	Randomforest.R: randomforest analysis for a cultural region (i.e., Anglo).
+7.	Decision tree. Rmd: decision tree for a culturaö region (i.e., Nordic)
+8.
 
