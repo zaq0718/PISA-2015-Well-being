@@ -14,3 +14,6 @@ The Student questionnaire data file was used.
 7.	Decision tree. Rmd: decision tree for a cultural region (i.e., Nordic)
 8.  Nordic_19012021_Tuned.pdf: the documentation of the decision tree analysis in Nordic
 
+**Publication**: 
+Wu, Y. J., & Lee, J. (2022). The most salient global predictors of adolescents’ subjective Well-Being: Parental support, peer support, and anxiety. Child Indicators Research, 15(5), 1601-1629.
+https://doi.org/10.1007/s12187-022-09937-1
